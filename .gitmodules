@@ -1,0 +1,6 @@
+[submodule "abseil-cpp"]
+	path = abseil-cpp
+	url = git@github.com:abseil/abseil-cpp.git
+[submodule "folly"]
+	path = folly
+	url = git@github.com:facebook/folly.git
