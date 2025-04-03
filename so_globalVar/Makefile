@@ -19,7 +19,11 @@ app3: app3.cpp my_class.hpp
 app4: app4.cpp my_class.hpp
 	g++ -ldl -o app4.elf app4.cpp
 
-all: app1 app2 app3 app4
+app5: app5.cpp my_class.hpp
+	g++ -rdynamic -ldl -o app5.elf app5.cpp 
+	g++ -fPIE -pie -rdynamic -ldl -o app5.elf app5.cpp 
+
+all: app1 app2 app3 app4 app5
 
 clean:
 	rm -f *.elf lib*.so
