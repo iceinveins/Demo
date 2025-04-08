@@ -50,6 +50,7 @@ g++ -L./ -lmylib2 -lmylib1 -lmylib3 -o app1 app1.cpp
 同理lib2 lib1
 
 在链接阶段，app1.cpp中的MyClass构造析构函数以及g_var都已完成重定位0x404198
+但是因为app1.cpp中将MyClass g_var显式声明了static, 所以符号是LOCAL的，不会暴露给后续动态库，所以后续动态库的解析全部指向了第一个暴露的（即lib3）
 
 ## <font color="dc843f">app2.elf</font>
 ```
