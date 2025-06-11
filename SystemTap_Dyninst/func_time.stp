@@ -1,0 +1,25 @@
+# 统计函数执行时间的SystemTap脚本
+global start_time  # 全局变量存储时间戳
+
+probe begin {
+    printf("开始监控函数执行时间...\n")
+}
+
+# 函数入口探针 process("程序名").function("函数名") or kernel.function("函数名")
+probe process("exercise.elf").function("print_iteration").call {
+    start_time[tid()] = gettimeofday_ns()  # 记录纳秒级时间戳
+}
+
+# 函数返回探针
+probe process("exercise.elf").function("print_iteration").return {
+    if (tid() in start_time) {
+        duration = gettimeofday_ns() - start_time[tid()]
+        printf("函数 %s 执行耗时：%d ns (线程：%d)\n", 
+               probefunc(), duration, tid())
+        delete start_time[tid()]  # 清理哈希表
+    }
+}
+
+probe end {
+    printf("\n监控结束\n")
+}

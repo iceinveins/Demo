@@ -1,0 +1,11 @@
+#!/usr/bin/stap
+
+global count = 0
+
+probe process.function("print_iteration") {
+    count++
+}
+
+probe end {
+    printf("Function executed %d times.\n", count)
+}
