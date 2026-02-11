@@ -1,0 +1,4 @@
+/persistent/Demo/rxcppTest/build/CMakeFiles/rxcppTest.dir
+/persistent/Demo/rxcppTest/build/CMakeFiles/test.dir
+/persistent/Demo/rxcppTest/build/CMakeFiles/edit_cache.dir
+/persistent/Demo/rxcppTest/build/CMakeFiles/rebuild_cache.dir
